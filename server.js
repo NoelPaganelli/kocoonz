@@ -45,7 +45,22 @@ app.get('/', function(req, res) {
   res.render("home");
 })
 app.get('/find', function(req, res) {
-  res.render("find");
+  
+  var home = [];
+  UserModel.find(function(err, users) {
+    for(var i=0; i<users.length; i++) {
+      for(var y=0; y<users[i].home.length; y++) {
+        //console.log(users[i].home[y]);
+        home.push(users[i].home[y]);
+      }
+    }
+    
+    console.log(home);
+    res.render("find", {homeList : home});
+  });
+  
+
+
 })
 
 

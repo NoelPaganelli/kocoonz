@@ -73,67 +73,22 @@
             <div class="row">
               <div class="col-xs-8">
                 <div class="row">
-                    <div class="col-xs-4">
-                      <div class="thumbnail">
-                        <img class="img-responsive" src="./img/appart-1.jpg">
-                        <div class="caption">
-                          <h5>Design et calme au cœur de la ville</h5>
-                          <p><span> 250€</span> Logement entier</p>
-                          <div class="text-center"><a href="#" class="btn btn-dark" role="button">Reserver</a></div>
-                        </div>
-                      </div>
-                    </div>
-                     <div class="col-xs-4">
-                      <div class="thumbnail">
-                        <img class="img-responsive" src="./img/appart-1.jpg">
-                        <div class="caption">
-                          <h5>Design et calme au cœur de la ville</h5>
-                          <p><span> 250€</span> Logement entier</p>
-                          <div class="text-center"><a href="#" class="btn btn-dark" role="button">Reserver</a></div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-xs-4">
-                      <div class="thumbnail">
-                        <img class="img-responsive" src="./img/appart-1.jpg">
-                        <div class="caption">
-                          <h5>Design et calme au cœur de la ville</h5>
-                          <p><span> 250€</span> Logement entier</p>
-                          <div class="text-center"><a href="#" class="btn btn-dark" role="button">Reserver</a></div>
-                        </div>
-                      </div>
-                    </div>
-                    
+                    <%
+                    for(var i=0; i<homeList.length; i++) {
+                    %>
                       <div class="col-xs-4">
-                      <div class="thumbnail">
-                        <img class="img-responsive" src="./img/appart-1.jpg">
-                        <div class="caption">
-                          <h5>Design et calme au cœur de la ville</h5>
-                          <p><span> 250€</span> Logement entier</p>
-                          <div class="text-center"><a href="#" class="btn btn-dark" role="button">Reserver</a></div>
+                        <div class="thumbnail">
+                          <img class="img-responsive" src="./img/home/<%=homeList[i].id%>.jpg">
+                          <div class="caption">
+                            <h5><%=homeList[i].title %></h5>
+                            <p><span> <%=homeList[i].price %>€</span> <%=homeList[i].desc %> - <%=homeList[i].location %></p>
+                            <div class="text-center"><a href="#" class="btn btn-dark" role="button">Reserver</a></div>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                     <div class="col-xs-4">
-                      <div class="thumbnail">
-                        <img class="img-responsive" src="./img/appart-1.jpg">
-                        <div class="caption">
-                          <h5>Design et calme au cœur de la ville</h5>
-                          <p><span> 250€</span> Logement entier</p>
-                          <div class="text-center"><a href="#" class="btn btn-dark" role="button">Reserver</a></div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-xs-4">
-                      <div class="thumbnail">
-                        <img class="img-responsive" src="./img/appart-1.jpg">
-                        <div class="caption">
-                          <h5>Design et calme au cœur de la ville</h5>
-                          <p><span> 250€</span> Logement entier</p>
-                          <div class="text-center"><a href="#" class="btn btn-dark" role="button">Reserver</a></div>
-                        </div>
-                      </div>
-                    </div>
+                    <%
+                    }
+                    %>
                 </div>
               </div>
               <!-- /.row -->
