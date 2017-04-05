@@ -1,9 +1,14 @@
 var express = require('express');
 var mongoose= require('mongoose');
 var session = require("express-session");
+var fileUpload = require('express-fileupload');
+var bodyParser = require('body-parser')
+
 mongoose.connect('mongodb://localhost/kocoonz' , function(err) {
 
 });
+
+
 
 var homeSchema = mongoose.Schema({
   title:String,
@@ -29,7 +34,12 @@ app.use(
   saveUninitialized: false,
  })
 );
-
+app.use(fileUpload());
+// parse application/x-www-form-urlencoded 
+app.use(bodyParser.urlencoded({ extended: false }))
+ 
+// parse application/json 
+app.use(bodyParser.json())
 
 app.get('/', function(req, res) {
   res.render("home");
@@ -68,7 +78,7 @@ app.get('/register', function(req, res) {
    email: req.query.email, 
    password: req.query.password
   });
-  user.save(function (error, contact) {
+  user.save(function (error, user) {
       
       req.session.islogue = true;
       req.session.email =  req.query.email;
@@ -95,22 +105,31 @@ app.get('/hote', function(req, res) {
   }
 })
 
-app.get('/register-hote', function(req, res) {
+app.post('/register-hote', function(req, res) {
+  
+
   console.log(req.query.title+'/'+req.query.desc+'/'+req.query.location+'/'+req.query.price);
 
   UserModel.find( { email: req.session.email, password: req.session.password} , function (err, user) {
 
     user[0].home.push({  
-      title: req.query.title,
-      desc: req.query.desc,
-      location: req.query.location,
-      price: req.query.price
+      title: req.body.title,
+      desc: req.body.desc,
+      location: req.body.location,
+      price: req.body.price
     });
 
-    user[0].save();
-    res.redirect("/");
+    user[0].save(function() {
+        var total = user[0].home.length;
+        
+        req.files.picture.mv('./public/img/home/'+user[0].home[total-1].id+'.jpg', function(err) {
+        });
+        res.redirect("/");
+    });
+    
     
   })
+  
   
 })
 

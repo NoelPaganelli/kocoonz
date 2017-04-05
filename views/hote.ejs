@@ -46,7 +46,8 @@
               
               <div class="row">
              <div class="col-xs-offset-2 col-xs-8">
-              <form action="/register-hote" class="form-horizontal">
+              <form action="/register-hote" class="form-horizontal" method="post" enctype="multipart/form-data">
+
                 <div class="form-group">
                   <label for="titre" class="col-sm-2 control-label">Titre</label>
                   <div class="col-sm-10">
@@ -71,11 +72,11 @@
                     <input type="text" class="form-control" id="prix" placeholder="prix" name="price">
                   </div>
                 </div>
-                
+      
                 <div class="form-group">
                   <label for="photo" class="col-sm-2 control-label">Photo</label>
                   <div class="col-sm-10">
-                    <input type="file" id="photo" placeholder="photo">
+                    <input type="file" id="photo" name="picture" placeholder="photo">
                   </div>
                 </div>
                 
