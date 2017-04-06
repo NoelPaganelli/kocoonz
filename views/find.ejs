@@ -35,17 +35,17 @@
       <header id="top" class="header" style="height: 50px;">
           <div class="text-vertical-center">
             <div class="container">
-                <form>
+                <form action="./find">
                   <div class="row">
-                      <div class="col-xs-offset-1 col-xs-4">
-                        <input type="text" class="form-control" placeholder="Destination">
+                      <div class="col-xs-offset-1 col-xs-8">
+                        <input type="text" class="form-control" placeholder="Destination" name="location">
                       </div>
-                      <div class="col-xs-2">
+                      <!--<div class="col-xs-2">
                         <input type="text" class="form-control" placeholder="date de début">
                       </div>
                       <div class="col-xs-2">
                         <input type="text" class="form-control" placeholder="date de fin">
-                      </div>
+                      </div>-->
                       <div class="col-xs-2">
                         <input type="submit" class="btn btn-dark" value="Rechercher">
                       </div>
@@ -76,7 +76,7 @@
                     <%
                     for(var i=0; i<homeList.length; i++) {
                     %>
-                      <div class="col-xs-4">
+                      <div class="col-xs-4 home" data-lat="<%=homeList[i].lat %>" data-lon="<%=homeList[i].lon %>">
                         <div class="thumbnail">
                           <img class="img-responsive" src="./img/home/<%=homeList[i].id%>.jpg">
                           <div class="caption">
